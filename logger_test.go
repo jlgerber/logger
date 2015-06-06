@@ -12,4 +12,9 @@ func TestLogger_Debug(t *testing.T) {
 	log.Error("That was a problem:", 1)
 	log.Warning("Bad Value", bv)
 	log.Info("So this doesn't work")
+
+	log.Debugf("%s %s", "Shoot!", "this is rad")
+	log.Errorf("%s %d", "That was a problem:", 1)
+	log.Warningf("%s %d", "Bad Value", bv[0])
+	log.Infof("%s", "So this doesn't work")
 }

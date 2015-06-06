@@ -16,10 +16,24 @@ func (l *Logger) Debug(i ...interface{}) {
 	}
 }
 
+func (l *Logger) Debugf(template string, i ...interface{}) {
+	if l.Level <= DEBUG {
+
+		fmt.Printf("[DEBUG] - %s\n", fmt.Sprintf(template, i...))
+	}
+}
+
 func (l *Logger) Info(i ...interface{}) {
 	if l.Level <= INFO {
 
 		fmt.Printf("[INFO]  - %s\n", fmt.Sprint(i...))
+	}
+}
+
+func (l *Logger) Infof(template string, i ...interface{}) {
+	if l.Level <= INFO {
+
+		fmt.Printf("[INFO]  - %s\n", fmt.Sprintf(template, i...))
 	}
 }
 
@@ -30,6 +44,13 @@ func (l *Logger) Warning(i ...interface{}) {
 	}
 }
 
+func (l *Logger) Warningf(template string, i ...interface{}) {
+	if l.Level <= WARNING {
+
+		fmt.Printf("[WARN]  - %s\n", fmt.Sprintf(template, i...))
+	}
+}
+
 func (l *Logger) Error(i ...interface{}) {
 	if l.Level <= ERROR {
 
@@ -37,10 +58,25 @@ func (l *Logger) Error(i ...interface{}) {
 	}
 }
 
+func (l *Logger) Errorf(template string, i ...interface{}) {
+	if l.Level <= ERROR {
+
+		fmt.Printf("[ERROR] - %s\n", fmt.Sprintf(template, i...))
+	}
+}
+
 func (l *Logger) Fatal(i ...interface{}) {
 	if l.Level <= FATAL {
 
 		fmt.Printf("[FATAL] - %s\n", fmt.Sprint(i...))
+		os.Exit(1)
+	}
+}
+
+func (l *Logger) Fatalf(template string, i ...interface{}) {
+	if l.Level <= FATAL {
+
+		fmt.Printf("[FATAL] - %s\n", fmt.Sprintf(template, i...))
 		os.Exit(1)
 	}
 }
